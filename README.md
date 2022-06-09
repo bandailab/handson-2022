@@ -1,24 +1,11 @@
-# README
+# handson-2022
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## About
 
-Things you may want to cover:
+* 2022 年度の自由工作 (Araki, Nemoto, Minegishi) のレポジトリです．
 
-* Ruby version
+## Usage
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+$ rails s
+```
