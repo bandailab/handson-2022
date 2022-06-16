@@ -30,9 +30,11 @@
 }
 
 /* メイン */
-.bd-highlight{
-    background-color: aqua;
-}
+.container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 2000px; 
+    }
 
 /* フッター */
 .footer {
@@ -43,8 +45,7 @@
     height: 60px;
     background-color: #f5f5f5;
     }
-    body > .container {
-    padding: 60px 15px 0;
+    body > .container-fluid {
     }
     .container .text-muted {
     margin: 20px 0;
