@@ -8,6 +8,8 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+  <body>
     <% if logged_in? %>
       <ul class="dropdown-menu">
         <li><%= link_to "HOME" , root_path %></li>
@@ -15,12 +17,9 @@
         <li><%= button_to "Log out", logout_path, method: :delete %></li>
       </ul>
     <% else %>
-      <li><%= link_to "Sign up", '#' %></li>
+      <li><%= link_to "Sign up", signup_path %></li>
       <li><%= link_to "Log in", login_path %></li>
     <% end %>
-  </head>
-
-  <body>
     <%= yield %>
   </body>
 </html>
