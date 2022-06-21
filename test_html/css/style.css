@@ -1,7 +1,7 @@
 /* ヒーローヘッダー */
 .jumbotron-extend {
     position: relative;
-    height: 100vh;
+    height: 50vh;
     min-height: 300px;
     background: url(../img/main.jpg) no-repeat center center;
     background-size: cover;
