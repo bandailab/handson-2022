@@ -1,6 +1,7 @@
-<% if logged_in? %>
-  <h1> ログイン済み </h1>
-<% end %>
+<div class="container">
+  <% if logged_in? %>
+    <h1> ログイン済み </h1>
+  <% end %>
 
-<%= @user.name %>, <%= @user.email %>
-
+  <%= @user.name %>, <%= @user.email %>
+</div>
