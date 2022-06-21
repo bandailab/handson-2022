@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to user
     else
-      flash.now[:danger] = 'Invalid email/password combination'
+      flash[:danger] = 'エラー: もう一度やり直してください'
       redirect_to login_path
     end
   end
