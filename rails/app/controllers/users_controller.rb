@@ -14,7 +14,8 @@ class UsersController < ApplicationController
       log_in @user
       redirect_to @user
     else
-      render 'new', status: :unprocessable_entity
+      flash[:alert] = "登録に失敗しました。"
+      redirect_to signup_path
     end
   end
 
