@@ -25,7 +25,7 @@
       <!-- TODO: あまりにも適当．あとは任せた． -->
       <% if logged_in? %>
         <article>
-          <h1 class="border-bottom">峯岸 聖太</h1>
+          <h1 class="border-bottom"><%= @user.name %></h1>
           <%= gravatar_for @user, size: 250, _class: "card-img-right flex-auto d-none d-lg-block" %>
           <h4>学年</h4>
           <p><%= @user.grade %></p>
