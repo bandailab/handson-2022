@@ -3,5 +3,48 @@
     <h1> ログイン済み </h1>
   <% end %>
 
-  <%= @user.name %>, <%= @user.email %>
+<!-- Hero Header -->
+<div class="jumbotron jumbotron-extend">
+  <div class="container-fluid jumbotron-container">
+    <h1 class="site-name"> Welcome to Bandai Lab!</h1>
+    <p>萬代研究室では，情報ネットワーク及びネットワークコンピューティング，アプリケーション技術を開発しています．大学ならではの中長期的な視点で研究に取り組みます．</p>
+    <p><a class="btn btn-black" href="#" role="button">CONTACT ME</a></p>
+  </div>
+</div> 
+
+<!-- Main contents -->
+<div class="container-fluid mt-5 ">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="d-flex flex-column">
+        <div class="p-2 border"><a href="https://bandailab.jp/"> ホームページ</a></div>
+        <div class="p-2 border"><a href="../index.html"> 記事一覧</a></div>
+        <div class="p-2 border">Flex item 3</div>
+      </div>
+    </div>
+    <div class="col-md-10">
+      <!-- TODO: あまりにも適当．あとは任せた． -->
+      <% if logged_in? %>
+        <article>
+          <%= link_to "編集", edit_user_path %>
+          <h1 class="border-bottom"> <p> <%= @user.name %> </p> </h1>
+          <%= gravatar_for @user, size: 250, _class: "card-img-right flex-auto d-none d-lg-block" %>
+          <h4>学年</h4>
+          <p><%= @user.grade %></p>
+          <br>
+          <h4>研究テーマ</h4>
+          <p><%= @user.research_theme %></p>
+          <br>
+          <h4>自己紹介</h4>
+          <p><%= @user.introduction %></p>
+          <br>
+          <h4>投稿・週間報告</h4>
+          <p>ここらへんに投稿や週刊報告へのリンク？？？</p>
+          <%= link_to "編集", edit_user_path %>
+        </article>
+      <% else %>
+        ログインが必要です．
+      <% end %>
+    </div>
+  </div>
 </div>
