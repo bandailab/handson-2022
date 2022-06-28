@@ -1,0 +1,75 @@
+<% content_for :css do %>
+    <%= stylesheet_link_tag 'css/hero' %>
+<% end %>
+
+<!-- Hero Header -->
+<div class="jumbotron jumbotron-extend">
+  <div class="container-fluid jumbotron-container">
+    <h1 class="site-name"> Welcome to Bandai Lab!</h1>
+    <p>萬代研究室では，情報ネットワーク及びネットワークコンピューティング，アプリケーション技術を開発しています．大学ならではの中長期的な視点で研究に取り組みます．</p>
+    <p><a class="btn btn-black" href="#" role="button">CONTACT ME</a></p>
+  </div>
+</div> 
+
+<!-- Main contents -->
+<div class="container-fluid mt-5 ">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="d-flex flex-column">
+        <div class="p-2 border"><a href="https://bandailab.jp/"> ホームページ</a></div>
+        <div class="p-2 border"><a href="./index.html"> 記事一覧</a></div>
+        <div class="p-2 border">Flex item 3</div>
+      </div>
+    </div>
+    <div class="col-md-10">
+      <% if logged_in? %>
+        <div class="container-fluid">
+          <!-- TODO: 学年別（コース別）に表示．できれば何らかの JS を用いて並び替え表示などを実現したい． -->
+          <!--
+            <h3>Doctoral Students</h3>
+            <div class="row mb-2">
+            <div class="col-md-6">
+
+            </div>
+            </div>
+          -->
+
+          <h3>Students</h3>
+          <div class="row mb-2">
+
+            <% @users.each do |user| %>
+              <!-- Member Card -->
+              <div class="col-md-6">
+                <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+                  <div class="card-body d-flex flex-column align-items-start">
+                    <strong class="d-inline-block mb-2 text-primary"><%= user.grade %></strong>
+                    <h3 class="mb-2">
+                      <a class="text-dark" href="#"><%= user.name %></a>
+                    </h3>
+                    <div class="mb-2 text-muted"><%= user.research_theme %></div>
+                    <p class="card-text ml-auto"><%= user.introduction %></p>
+                    <%= link_to("個人ページ", "/users/#{user.id}", {class: "stretched-link"}) %>
+                  </div>
+                  <%= gravatar_for user, size: 250, _class: "card-img-right flex-auto d-none d-lg-block" %>
+                </div>
+              </div>
+            <% end %>
+
+          </div>
+
+          <!--
+            <h3>Bachelor Students</h3>
+            <div class="row mb-2">
+            <div class="col-md-6">
+
+            </div>
+            </div>       
+
+            </div>       
+          -->
+        <% else %>
+          <p>閲覧にはログインが必要です．</p>
+        <% end %>
+    </div>
+  </div>
+</div>

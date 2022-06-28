@@ -1,7 +1,6 @@
-<div class="container">
-  <% if logged_in? %>
-    <h1> ログイン済み </h1>
-  <% end %>
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'css/hero' %>
+<% end %>
 
 <!-- Hero Header -->
 <div class="jumbotron jumbotron-extend">
@@ -28,6 +27,7 @@
         <article>
           <%= link_to "編集", edit_user_path %>
           <h1 class="border-bottom"> <p> <%= @user.name %> </p> </h1>
+          
           <%= gravatar_for @user, size: 250, _class: "card-img-right flex-auto d-none d-lg-block" %>
           <h4>学年</h4>
           <p><%= @user.grade %></p>
@@ -40,7 +40,6 @@
           <br>
           <h4>投稿・週間報告</h4>
           <p>ここらへんに投稿や週刊報告へのリンク？？？</p>
-          <%= link_to "編集", edit_user_path %>
         </article>
       <% else %>
         ログインが必要です．
