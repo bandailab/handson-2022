@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :Posts
   has_secure_password
   before_save { self.email = email.downcase } #emailを全部小文字に変換
   validates :name, presence: true
