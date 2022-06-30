@@ -39,7 +39,15 @@
           <p><%= @user.introduction %></p>
           <br>
           <h4>投稿・週間報告</h4>
-          <p>ここらへんに投稿や週刊報告へのリンク？？？</p>
+          <% if @user.Posts.length == 0 %>
+            <p> まだ投稿はありません </p>
+          <% else %>
+            <%= @user.Posts.each do |post| %>
+              <ul>
+              <li> <%= post.title %> </li>
+              </ul>
+            <% end %>
+          <% end %>  
         </article>
       <% else %>
         ログインが必要です．
