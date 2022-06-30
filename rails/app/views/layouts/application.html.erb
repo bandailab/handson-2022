@@ -49,6 +49,7 @@
                 <% if logged_in? %>
                   <li><%= link_to "My Page", current_user, {class: 'nav-link'} %></li>
                   <li><%= button_to "Log out", logout_path, { method: :delete, class: 'nav-link' } %></li>
+                  <li><%= link_to "新規投稿", new_post_path, {class: 'nav-link'} %></li>
                 <% else %>
                   <li><%= link_to "Log in", login_path, {class: 'nav-link'} %></li>
                   <li><%= link_to "Sign up", signup_path, {class: 'nav-link'} %></li>
