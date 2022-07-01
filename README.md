@@ -13,6 +13,19 @@
 
 ## Usage
 
-```
+```sh
+# In the first launch:
+$ rails db:migrate
+
 $ rails s
+```
+
+### Use-Docker
+
+```sh
+$ docker-compose build
+$ docker-compose up 
+
+# In the first launch:
+$ docker-compose exec rails rails db:migrate
 ```
