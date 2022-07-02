@@ -45,6 +45,8 @@ gem "bootsnap", require: false
 gem 'redcarpet'
 gem 'rouge'
 
+gem 'simplemde-rails'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
