@@ -53,7 +53,7 @@
                   <h6 class="card-subtitle mb-2 text-muted"><%= post.user.name %></h6>
                   <h6 class="card-subtitle mb-2 text-muted">
                     <% post.tags.each do |tag| %>
-                      <%= tag %>
+                      <span class="badge rounded-pill bg-secondary"><%= tag.name %></span>
                     <% end %>
                   </h6>
                   <p class="card-text"><%= post.article %></p>

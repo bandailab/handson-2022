@@ -2,10 +2,10 @@ class PostsController < ApplicationController
   def new
     if logged_in?
       @post = Post.new
+      @post.post_tags.build
     else 
       redirect_to root_path
     end
-    
   end
 
   def create
@@ -24,9 +24,9 @@ class PostsController < ApplicationController
   private
     def post_params
       params.require(:post).permit(
+        { :tag_ids => [] },
         :title,
         :article,
-        :tag_id,
       )
     end
 end

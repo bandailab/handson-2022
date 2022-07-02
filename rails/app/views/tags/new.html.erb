@@ -1,0 +1,10 @@
+<h1>新規投稿</h1>
+
+<%= form_with(model: @tag, local: true) do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.submit "Add new tag", class: "btn btn-primary" %><br>
+<% end %>
+

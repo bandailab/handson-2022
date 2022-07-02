@@ -1,16 +1,19 @@
 <h1>新規投稿</h1>
 
 <%= form_with(model: @post, local: true) do |f| %>
-
-  <%= f.label :tag %>
-  <%= f.collection_select(:tag_id, Tag.all, :id, :name) %>
+  <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+    <%= tag.label {tag.check_box + tag.text} %>
+  <% end %>
+  <br>
 
   <%= f.label :title %>
   <%= f.text_field :title %>
+  <br>
 
   <%= f.label :article %>
   <%= f.text_field :article %>
-  
+  <br>
+
   <%= f.submit "Add new post", class: "btn btn-primary" %><br>
 <% end %>
 
