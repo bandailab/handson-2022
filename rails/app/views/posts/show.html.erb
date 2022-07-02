@@ -1,0 +1,26 @@
+<%= render 'layouts/hero' %>
+
+<!-- Main contents -->
+<div class="container-fluid mt-5 ">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="d-flex flex-column">
+        <div class="p-2 border"><a href="https://bandailab.jp/"> ホームページ</a></div>
+        <div class="p-2 border"><a href="./index.html"> 記事一覧</a></div>
+        <div class="p-2 border">Flex item 3</div>
+      </div>
+    </div>
+    <div class="col-md-10">
+      <article class="blog-post">
+        <h2 class="blog-post-title"><%= @post.title %></h2>
+        <% @post.tags.each do |tag| %>
+          <span class="badge rounded-pill bg-secondary"><%= tag.name %></span>
+        <% end %>
+        <p class="blog-post-meta"><%= @post.created_at %> by <a href="/users/<%= @post.user.id %>"><%= @post.user.name %></a></p>
+
+        <%= toc(@post.article) %>
+        <%= markdown(@post.article) %>
+      </article>
+    </div>
+  </div>
+</div>

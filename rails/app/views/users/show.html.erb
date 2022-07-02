@@ -43,29 +43,33 @@
           <p><%= @user.introduction %></p>
           <br>
           <h4>投稿・週間報告</h4>
-          <% if @user.Posts.length == 0 %>
-            <p> まだ投稿はありません </p>
-          <% else %>
-            <% @user.Posts.each do |post| %>
-              <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                  <h5 class="card-title"><%= post.title %></h5>
-                  <h6 class="card-subtitle mb-2 text-muted"><%= post.user.name %></h6>
-                  <h6 class="card-subtitle mb-2 text-muted">
-                    <% post.tags.each do |tag| %>
-                      <span class="badge rounded-pill bg-secondary"><%= tag.name %></span>
-                    <% end %>
-                  </h6>
-                  <p class="card-text"><%= post.article %></p>
-                  <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a>
+
+          <% if @user.Posts.length != 0 %>
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+              <% @user.Posts.each do |post| %>
+                <div class="card h-100" style="width: 25rem;">
+                  <div class="card-body">
+                    <h4 class="card-title"><%= post.title %></h4>
+                    <h5 class="card-subtitle mb-2 text-muted"><%= post.user.name %></h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><%= post.created_at %></h6>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                      <% post.tags.each do |tag| %>
+                        <span class="badge rounded-pill bg-secondary"><%= tag.name %></span>
+                      <% end %>
+                    </h6>
+                    <p class="card-text"><%= plaintext(post.article) %></p>
+                    <%= link_to("Link", "/posts/#{post.id}", {class: "btn btn-primary"}) %>
+                  </div>
                 </div>
               <% end %>
-            <% end %>  
+            </div>
+          <% else %>
+            <p> まだ投稿はありません． </p>
+          <% end %>  
         </article>
       <% else %>
         ログインが必要です．
       <% end %>
-              </div>
     </div>
   </div>
+</div>
