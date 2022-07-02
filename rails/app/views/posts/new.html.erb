@@ -1,4 +1,5 @@
 <h1>新規投稿</h1>
+<%= render 'layouts/hero' %>
 
 <%= form_with(model: @post, local: true) do |f| %>
   <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
