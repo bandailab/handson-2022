@@ -17,7 +17,9 @@
           <span class="badge rounded-pill bg-secondary"><%= tag.name %></span>
         <% end %>
         <p class="blog-post-meta"><%= @post.created_at %> by <a href="/users/<%= @post.user.id %>"><%= @post.user.name %></a></p>
-
+        <% if current_user == @post.user %>
+          <a href="/posts/<%= @post.id %>/edit">編集</a>
+        <% end %>
         <%= toc(@post.article) %>
         <%= markdown(@post.article) %>
       </article>

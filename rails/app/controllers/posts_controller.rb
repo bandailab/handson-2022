@@ -25,6 +25,33 @@ class PostsController < ApplicationController
     end
   end
 
+  def index
+    @posts = Post.all
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+     
+    #編集しようとしてるユーザーがログインユーザーとイコールかをチェック
+    if current_user == @post.user
+     
+      if @post.update(post_params)
+        flash[:success] = '投稿を編集しました。'
+        redirect_to @post
+      else
+        flash[:danger] = '投稿の編集に失敗しました。'
+        redirect_to edit_post_path
+      end   
+     
+    else
+        redirect_to root_url
+    end
+  end  
+
   private
     def post_params
       params.require(:post).permit(

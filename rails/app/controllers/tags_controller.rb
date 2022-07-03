@@ -13,7 +13,7 @@ class TagsController < ApplicationController
     @tag = Tag.new(tag_params)
     if @tag.save
       flash[:success] = "登録しました!"
-      redirect_to user
+      redirect_to new_post_path
     else
       flash[:danger] = "登録に失敗しました。"
       redirect_to new_tag_path
