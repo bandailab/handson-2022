@@ -26,11 +26,12 @@
       <% if logged_in? %>
         <article>
 
-          <% if current_user == @user %>
-            <p><%= link_to "編集", edit_user_path %></p>
-          <% end %>
-
-          <h1 class="border-bottom"> <p> <%= @user.name %> </p> </h1>
+          <h1 class="border-bottom">
+            <%= @user.name %>
+            <% if current_user == @user %>
+              <a class="h6" href="/users/<%= @user.id %>/edit">編集</a>
+            <% end %>
+          </h1>
 
           <%= gravatar_for @user, size: 250, _class: "card-img-right flex-auto d-none d-lg-block" %>
           <h4>学年</h4>
@@ -50,14 +51,13 @@
                 <div class="card h-100" style="width: 25rem;">
                   <div class="card-body">
                     <h4 class="card-title"><%= post.title %></h4>
-                    <h5 class="card-subtitle mb-2 text-muted"><%= post.user.name %></h5>
                     <h6 class="card-subtitle mb-2 text-muted"><%= post.created_at %></h6>
                     <h6 class="card-subtitle mb-2 text-muted">
                       <% post.tags.each do |tag| %>
                         <span class="badge rounded-pill bg-secondary"><%= tag.name %></span>
                       <% end %>
                     </h6>
-                    <p class="card-text"><%= plaintext(post.article) %></p>
+                    <p class="card-text"><%= abstract(plaintext(post.article)) %></p>
                     <%= link_to("Link", "/posts/#{post.id}", {class: "btn btn-primary"}) %>
                   </div>
                 </div>

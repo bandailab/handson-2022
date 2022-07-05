@@ -247,9 +247,7 @@ GEM
     zeitwerk (2.5.4)
 
 PLATFORMS
-  aarch64-linux
-  arm64-darwin-21
-  x86_64-darwin-21
+  ruby
 
 DEPENDENCIES
   bcrypt (= 3.1.12)
@@ -263,11 +261,10 @@ DEPENDENCIES
   rails (~> 7.0.3)
   redcarpet
   rouge
-  selenium-webdriver
-  simplemde-rails
   rspec-queue
   rspec-rails (~> 4.0)
   selenium-webdriver
+  simplemde-rails
   spring-commands-rspec
   sprockets-rails
   sqlite3 (~> 1.4)

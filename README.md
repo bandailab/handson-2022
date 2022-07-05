@@ -23,6 +23,7 @@ $ rails s
 ### Use-Docker
 
 ```sh
+$ docker-compose down --rmi all --volumes --remove-orphans
 $ docker-compose build
 $ docker-compose up 
 
