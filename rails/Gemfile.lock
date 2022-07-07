@@ -263,11 +263,10 @@ DEPENDENCIES
   rails (~> 7.0.3)
   redcarpet
   rouge
-  selenium-webdriver
-  simplemde-rails
   rspec-queue
   rspec-rails (~> 4.0)
   selenium-webdriver
+  simplemde-rails
   spring-commands-rspec
   sprockets-rails
   sqlite3 (~> 1.4)

@@ -20,8 +20,8 @@ class PostsController < ApplicationController
       flash[:success] = "投稿しました!"
       redirect_to user
     else
-      flash[:danger] = "登録に失敗しました。"
-      redirect_to new_post_path
+      flash.now[:danger] = "登録に失敗しました。"
+      render 'new'
     end
   end
 
