@@ -20,8 +20,7 @@ class PostsController < ApplicationController
       flash[:success] = "投稿しました!"
       redirect_to user
     else
-      flash.now[:danger] = "登録に失敗しました。"
-      render 'new'
+      render 'new', status: :unprocessable_entity
     end
   end
 
@@ -43,8 +42,7 @@ class PostsController < ApplicationController
         flash[:success] = '投稿を編集しました。'
         redirect_to @post
       else
-        flash[:danger] = '投稿の編集に失敗しました。'
-        redirect_to edit_post_path
+        render 'edit', status: :unprocessable_entity
       end   
      
     else
