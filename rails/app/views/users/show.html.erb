@@ -39,7 +39,7 @@
                 <h5>研究テーマ</h5>
                 <div class="mb-1 text-muted"><%= @user.research_theme %></div>
                 <h5>自己紹介</h5>
-                <p class="card-text ml-auto"><%= abstract(@user.introduction,170) %></p>
+                <p class="card-text ml-auto"><%= @user.introduction %></p>
               </div>
               <%= gravatar_for @user, size: 250, _class: "card-img-right flex-auto d-none d-lg-block" %>
             </div>
