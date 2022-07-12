@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_02_023300) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_12_014104) do
   create_table "post_tags", force: :cascade do |t|
     t.integer "post_id"
     t.integer "tag_id"
@@ -39,7 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_02_023300) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "grade"
+    t.integer "grade_id"
     t.string "research_theme"
     t.string "introduction"
   end

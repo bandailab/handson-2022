@@ -51,7 +51,7 @@ class UsersController < ApplicationController
         :email,
         :password,
         :password_confirmation,
-        :grade,
+        :grade_id,
         :research_theme,
         :introduction,
       )

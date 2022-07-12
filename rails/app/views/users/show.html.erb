@@ -35,7 +35,7 @@
 
           <%= gravatar_for @user, size: 250, _class: "card-img-right flex-auto d-none d-lg-block" %>
           <h4>学年</h4>
-          <p><%= @user.grade %></p>
+          <p><%= @user.grade.name %></p>
           <br>
           <h4>研究テーマ</h4>
           <p><%= @user.research_theme %></p>
