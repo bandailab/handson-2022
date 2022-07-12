@@ -8,6 +8,7 @@
   <h1>新規投稿</h1>
 
   <%= form_with(model: @post, local: true) do |f| %>
+    <%= render 'shared/error_messages_post' %>
     <%= f.label :tag %><br>
     <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
       <%= tag.check_box %>
