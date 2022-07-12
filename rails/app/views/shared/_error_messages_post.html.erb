@@ -1,12 +1,15 @@
 <% if @post.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-danger">
-      <%= @post.errors.count %> 件のエラー
+      <h4 class='alert-heading'>
+        <%= @post.errors.count %> 件のエラー 
+      </h4>
+      <hr>
+      <ul>
+        <% @post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
     </div>
-    <ul>
-    <% @post.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
   </div>
 <% end %>
