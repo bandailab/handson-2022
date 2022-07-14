@@ -4,7 +4,7 @@ FactoryBot.define do
     email {"test@example.com"}
     password {"password"}
 
-    grade {"M1"}
+    grade_id {0}
     research_theme {"research_theme"}
     introduction {"introduction"}
   end
