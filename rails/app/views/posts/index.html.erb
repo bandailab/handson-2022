@@ -1,0 +1,50 @@
+<%= render 'layouts/hero' %>
+
+<!-- Main contents -->
+<div class="container-fluid mt-5 ">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="d-flex flex-column">
+        <div class="p-2 border"><a href="https://bandailab.jp/"> ホームページ</a></div>
+        <div class="p-2 border"><a href="../users"> メンバー一覧</a></div>
+        <div class="p-2 border"><a href="../posts"> 投稿記事一覧</a></div>
+      </div>
+    </div>
+    
+    <div class="col-md-10">
+      <% if logged_in? %> 
+        <article>
+          <h4 class="border-bottom">
+            全投稿記事一覧
+          </h4>
+
+          <% if @posts.length != 0 %>
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+              <% @posts.each do |post| %>
+                <div class="card h-100 mx-2" style="width: 25rem;">
+                  <div class="card-body">
+                    <h4 class="card-title"><%= post.title %></h4>
+                    <h6 class="card-subtitle mb-2 text-muted">posted by<%= post.user.name %></h6>
+                    <h6 class="card-subtitle mb-2 text-muted"><%= post.created_at %></h6>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                      <% post.tags.each do |tag| %>
+                        <span class="badge rounded-pill bg-secondary"><%= tag.name %></span>
+                      <% end %>
+                    </h6>
+                    <p class="card-text"><%= abstract(plaintext(post.article),30) %></p>
+                    <%= link_to("Link", "/posts/#{post.id}", {class: "btn btn-primary"}) %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% else %>
+            <p> まだ投稿はありません． </p>
+          <% end %>  
+        </article>
+      <% else %>
+        ログインが必要です．
+      <% end %>
+    </div>
+
+  </div>
+</div>

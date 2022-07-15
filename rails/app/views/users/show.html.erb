@@ -18,7 +18,7 @@
       <div class="d-flex flex-column">
         <div class="p-2 border"><a href="https://bandailab.jp/"> ホームページ</a></div>
         <div class="p-2 border"><a href="../users"> メンバー一覧</a></div>
-        <div class="p-2 border">Flex item 3</div>
+        <div class="p-2 border"><a href="../posts"> 投稿記事一覧</a></div>
       </div>
     </div>
     <div class="col-md-10">
@@ -47,11 +47,21 @@
           </div>
 
           <h4>投稿・週間報告</h4>
+          <%= form_tag @user, method: :get, class: 'boards__searchForm' do %>
+            <%= select_tag :tag_id,
+              options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+              {
+                prompt: 'タグで絞り込み検索',
+                onchange: 'submit(this.form);'
+              }
+            %>
+          <% end %>
+          <br>
 
           <% if @user.Posts.length != 0 %>
             <div class="row row-cols-1 row-cols-md-2 g-4">
-              <% @user.Posts.each do |post| %>
-                <div class="card h-100" style="width: 25rem;">
+              <% @posts.each do |post| %>
+                <div class="card h-100 mx-2" style="width: 25rem;">
                   <div class="card-body">
                     <h4 class="card-title"><%= post.title %></h4>
                     <h6 class="card-subtitle mb-2 text-muted"><%= post.created_at %></h6>
