@@ -24,6 +24,16 @@
           -->
 
           <h3>Students</h3>
+          <%= form_tag users_path, method: :get, class: 'boards__searchForm' do %>
+            <%= select_tag :grade_id,
+              options_from_collection_for_select(Grade.all, :id, :name, params[:garde_id]),
+              {
+                prompt: '学年で絞り込み検索',
+                onchange: 'submit(this.form);'
+              }
+            %>
+          <% end %>
+
           <div class="row mb-2">
 
             <% @users.each do |user| %>

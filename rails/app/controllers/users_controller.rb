@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = params[:grade_id].present? ? Grade.find(params[:grade_id]).users : User.all.order(grade_id: "DESC")
   end
 
   def edit
