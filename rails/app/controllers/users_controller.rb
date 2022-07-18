@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
   end
 
   def new
