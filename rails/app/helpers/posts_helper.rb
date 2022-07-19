@@ -1,8 +1,8 @@
 module PostsHelper
 
-    def abstract(text)
-        if text.length > 30
-            abst = text.slice(0..30)
+    def abstract(text, length)
+        if text.length > length
+            abst = text.slice(0..length)
             abst = abst + "..."
         else
             abst = text

@@ -6,8 +6,8 @@
     <div class="col-md-2">
       <div class="d-flex flex-column">
         <div class="p-2 border"><a href="https://bandailab.jp/"> ホームページ</a></div>
-        <div class="p-2 border"><a href="./index.html"> 記事一覧</a></div>
-        <div class="p-2 border">Flex item 3</div>
+        <div class="p-2 border"><a href="#"> メンバー一覧</a></div>
+        <div class="p-2 border"><a href="../posts"> 投稿記事一覧</a></div>
       </div>
     </div>
     <div class="col-md-10">
@@ -36,7 +36,7 @@
                       <a class="text-dark" href="#"><%= user.name %></a>
                     </h3>
                     <div class="mb-2 text-muted"><%= user.research_theme %></div>
-                    <p class="card-text ml-auto"><%= user.introduction %></p>
+                    <p class="card-text ml-auto"><%= abstract(user.introduction,30) %></p>
                     <%= link_to("個人ページ", "/users/#{user.id}", {class: "stretched-link"}) %>
                   </div>
                   <%= gravatar_for user, size: 250, _class: "card-img-right flex-auto d-none d-lg-block" %>
