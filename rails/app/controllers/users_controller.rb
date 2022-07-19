@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
+    @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : @user.Posts.all
   end
 
   def new
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = params[:grade_id].present? ? Grade.find(params[:grade_id]).users : User.all.order(grade_id: "DESC")
   end
 
   def edit
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     #編集しようとしてるユーザーがログインユーザーとイコールかをチェック
     if current_user == @user
      
-      if @user.update(user_params)
+      if @user.update(user_params_edit)
         flash[:success] = 'ユーザー情報を編集しました。'
         redirect_to @user
       else
@@ -52,6 +52,16 @@ class UsersController < ApplicationController
         :email,
         :password,
         :password_confirmation,
+        :grade_id,
+        :research_theme,
+        :introduction,
+      )
+    end
+
+    def user_params_edit
+      params.require(:user).permit(
+        :name,
+        :email,
         :grade_id,
         :research_theme,
         :introduction,

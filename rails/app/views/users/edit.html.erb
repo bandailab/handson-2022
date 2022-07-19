@@ -4,7 +4,7 @@
 <div class="container">
   <h1> 編集画面 </h1>
 
-  <%= form_for(@user) do |f| %>
+  <%= form_with(model: @user, local: true) do |f| %>
     <%= render 'shared/error_messages' %>
     <div class="mb-3">
       <%= f.label :name, {class: "form-label"} %>
@@ -13,14 +13,6 @@
     <div class="mb-3">
       <%= f.label :email, {class: "form-label"} %>
       <%= f.email_field :email, {type: "email", class: "form-control"} %>
-    </div>
-    <div class="mb-3">
-      <%= f.label :password, {class: "form-label"} %>
-      <%= f.password_field :password, {type: "password", class: "form-control"} %>
-    </div>
-    <div class="mb-3">
-      <%= f.label :password_confirmation, {class: "form-label"} %>
-      <%= f.password_field :password_confirmation, {type: "password", class: "form-control"} %>
     </div>
     
     <div class="mb-3">
