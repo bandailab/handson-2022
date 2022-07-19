@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     #編集しようとしてるユーザーがログインユーザーとイコールかをチェック
     if current_user == @user
      
-      if @user.update(user_params)
+      if @user.update(user_params_edit)
         flash[:success] = 'ユーザー情報を編集しました。'
         redirect_to @user
       else
@@ -52,6 +52,16 @@ class UsersController < ApplicationController
         :email,
         :password,
         :password_confirmation,
+        :grade_id,
+        :research_theme,
+        :introduction,
+      )
+    end
+
+    def user_params_edit
+      params.require(:user).permit(
+        :name,
+        :email,
         :grade_id,
         :research_theme,
         :introduction,
