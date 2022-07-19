@@ -17,7 +17,6 @@
           <h4 class="border-bottom">
             全投稿記事一覧
           </h4>
-<<<<<<< HEAD
           <%= form_tag @user, method: :get, class: 'boards__searchForm' do %>
             <%= select_tag :tag_id,
               options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
@@ -28,8 +27,6 @@
             %>
           <% end %>
           <br>
-=======
->>>>>>> a820c376568d60076d247f18577b2821829d6009
 
           <% if @posts.length != 0 %>
             <div class="row row-cols-1 row-cols-md-2 g-4">
@@ -37,11 +34,7 @@
                 <div class="card h-100 mx-2" style="width: 25rem;">
                   <div class="card-body">
                     <h4 class="card-title"><%= post.title %></h4>
-<<<<<<< HEAD
                     <h6 class="card-subtitle mb-2 text-muted">posted by <a class="h6" href="../users/<%= post.user.id %>"><%= post.user.name %></a></h6>
-=======
-                    <h6 class="card-subtitle mb-2 text-muted">posted by<%= post.user.name %></h6>
->>>>>>> a820c376568d60076d247f18577b2821829d6009
                     <h6 class="card-subtitle mb-2 text-muted"><%= post.created_at %></h6>
                     <h6 class="card-subtitle mb-2 text-muted">
                       <% post.tags.each do |tag| %>
