@@ -2,4 +2,7 @@ build:
   docker:
     rails: Dockerfile
 run:
-  web: bundle exec puma -C config/puma.rb
+  rails:
+    command:
+      - bundle exec puma -C config/puma.rb
+    image: rails
