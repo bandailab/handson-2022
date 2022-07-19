@@ -4,5 +4,5 @@ build:
 run:
   rails:
     command:
-      - bundle exec puma -C config/puma.rb
+      - bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     image: rails
