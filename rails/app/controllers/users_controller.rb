@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : @user.Posts.all
   end
 
   def new
@@ -14,8 +15,7 @@ class UsersController < ApplicationController
       log_in @user
       redirect_to @user
     else
-      flash[:alert] = "登録に失敗しました。"
-      redirect_to signup_path
+      render 'new', status: :unprocessable_entity
     end
   end
 
@@ -37,8 +37,7 @@ class UsersController < ApplicationController
         flash[:success] = 'ユーザー情報を編集しました。'
         redirect_to @user
       else
-        flash[:danger] = 'ユーザー情報の編集に失敗しました。'
-        redirect_to edit_user_path
+        render 'edit', status: :unprocessable_entity
       end   
      
     else
@@ -53,7 +52,7 @@ class UsersController < ApplicationController
         :email,
         :password,
         :password_confirmation,
-        :grade,
+        :grade_id,
         :research_theme,
         :introduction,
       )

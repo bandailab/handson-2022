@@ -1,8 +1,3 @@
-<% content_for :css do %>
-  <%= stylesheet_link_tag 'css/hero' %>
-<% end %>
-
-<!-- Hero Header -->
 <%= render 'layouts/hero' %>
 
 <!-- Main contents -->
@@ -11,47 +6,42 @@
     <div class="col-md-2">
       <div class="d-flex flex-column">
         <div class="p-2 border"><a href="https://bandailab.jp/"> ホームページ</a></div>
-        <div class="p-2 border"><a href="../index.html"> 記事一覧</a></div>
-        <div class="p-2 border">Flex item 3</div>
+        <div class="p-2 border"><a href="../users"> メンバー一覧</a></div>
+        <div class="p-2 border"><a href="../posts"> 投稿記事一覧</a></div>
       </div>
     </div>
+    
     <div class="col-md-10">
-      <!-- TODO: あまりにも適当．あとは任せた． -->
-      <% if logged_in? %>
+      <% if logged_in? %> 
         <article>
-
-          <h1 class="border-bottom">
-            <%= @user.name %>
-            <% if current_user == @user %>
-              <a class="h6" href="/users/<%= @user.id %>/edit">編集</a>
-            <% end %>
-          </h1>
-
-          <%= gravatar_for @user, size: 250, _class: "card-img-right flex-auto d-none d-lg-block" %>
-          <h4>学年</h4>
-          <p><%= @user.grade.name %></p>
+          <h4 class="border-bottom">
+            全投稿記事一覧
+          </h4>
+          <%= form_tag @user, method: :get, class: 'boards__searchForm' do %>
+            <%= select_tag :tag_id,
+              options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+              {
+                prompt: 'タグで絞り込み検索',
+                onchange: 'submit(this.form);'
+              }
+            %>
+          <% end %>
           <br>
-          <h4>研究テーマ</h4>
-          <p><%= @user.research_theme %></p>
-          <br>
-          <h4>自己紹介</h4>
-          <p><%= @user.introduction %></p>
-          <br>
-          <h4>投稿・週間報告</h4>
 
-          <% if @user.Posts.length != 0 %>
+          <% if @posts.length != 0 %>
             <div class="row row-cols-1 row-cols-md-2 g-4">
-              <% @user.Posts.each do |post| %>
-                <div class="card h-100" style="width: 25rem;">
+              <% @posts.each do |post| %>
+                <div class="card h-100 mx-2" style="width: 25rem;">
                   <div class="card-body">
                     <h4 class="card-title"><%= post.title %></h4>
+                    <h6 class="card-subtitle mb-2 text-muted">posted by <a class="h6" href="../users/<%= post.user.id %>"><%= post.user.name %></a></h6>
                     <h6 class="card-subtitle mb-2 text-muted"><%= post.created_at %></h6>
                     <h6 class="card-subtitle mb-2 text-muted">
                       <% post.tags.each do |tag| %>
                         <span class="badge rounded-pill bg-secondary"><%= tag.name %></span>
                       <% end %>
                     </h6>
-                    <p class="card-text"><%= abstract(plaintext(post.article)) %></p>
+                    <p class="card-text"><%= abstract(plaintext(post.article),30) %></p>
                     <%= link_to("Link", "/posts/#{post.id}", {class: "btn btn-primary"}) %>
                   </div>
                 </div>
@@ -65,5 +55,6 @@
         ログインが必要です．
       <% end %>
     </div>
+
   </div>
 </div>
